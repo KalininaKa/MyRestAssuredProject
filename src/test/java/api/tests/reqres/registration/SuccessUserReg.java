@@ -1,7 +1,5 @@
 package api.tests.reqres.registration;
 
-import api.tests.reqres.registration.Register;
-
 public class SuccessUserReg extends Register {
     private Integer id;
     private String token;

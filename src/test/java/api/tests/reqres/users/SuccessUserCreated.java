@@ -1,7 +1,5 @@
 package api.tests.reqres.users;
 
-import api.tests.reqres.users.Create;
-
 import java.util.Date;
 
 public class SuccessUserCreated extends Create {

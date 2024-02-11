@@ -2,9 +2,7 @@ package api.tests.reqres;
 
 
 import api.tests.reqres.specifications.Specifications;
-import api.tests.reqres.users.UserData;
 import io.restassured.module.jsv.JsonSchemaValidator;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

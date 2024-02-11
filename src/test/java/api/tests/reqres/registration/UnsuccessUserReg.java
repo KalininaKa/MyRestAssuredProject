@@ -1,7 +1,5 @@
 package api.tests.reqres.registration;
 
-import api.tests.reqres.registration.Register;
-
 public class UnsuccessUserReg extends Register {
     private String error;
     public UnsuccessUserReg() {
