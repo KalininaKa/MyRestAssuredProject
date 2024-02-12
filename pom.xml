@@ -86,60 +86,6 @@
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>${maven-compiler-plugin.version}</version>
-            <configuration>
-                <source>${java.version}</source>
-                <target>${java.version}</target>
-            </configuration>
-        </plugin>
-
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven-surefire-plugin}</version>
-            <configuration>
-                <testFailureIgnore>true</testFailureIgnore>
-                <argLine>
-                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                </argLine>
-                <properties>
-                    <property>
-                        <name>listener</name>
-                        <value>io.qameta.allure.junit4.AllureJunit4</value>
-                    </property>
-                    <systemPropertyVariables>
-                        <allure.results.directory>${project.build.directory}\allure-results</allure.results.directory>
-                    </systemPropertyVariables>
-                </properties>
-            </configuration>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-failsafe-plugin</artifactId>
-            <version>2.22.2</version>
-            <configuration>
-                <includes>
-                    <include>*/**</include>
-                </includes>
-                <groups>create</groups>
-                <testFailureIgnore>false</testFailureIgnore>
-                <argLine>
-                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar"
-                </argLine>
-                <systemProperties>
-                    <property>
-                        <name>junit.jupiter.extensions.autodetection.enabled</name>
-                        <value>true</value>
-                    </property>
-                </systemProperties>
-                <systemPropertyVariables>
-                    <allure.results.directory>${project.build.directory}\allure-results</allure.results.directory>
-                </systemPropertyVariables>
-            </configuration>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-resources-plugin</artifactId>
             <version>3.2.0</version>
         </plugin>
@@ -152,6 +98,50 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-maven</artifactId>
             <version>2.9</version>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+        <plugin>
+            <!--Подключаем Surefire плагин-->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.19.1</version>
+            <!--Настраиваем запуск aspectj-->
+            <configuration>
+                <testFailureIgnore>true</testFailureIgnore>
+                <argLine>
+                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"
+                </argLine>
+                <properties>
+                    <!--Правила для сбора информации Allure, на которые смотрит aspectj при работе-->
+                    <property>
+                        <name>listener</name>
+                        <value>io.qameta.allure.junit4.AllureJunit4</value>
+                    </property>
+                </properties>
+                <systemProperties>
+                    <!--Результаты Allure складываются в отдельную дирректорию в новом формате-->
+                    <property>
+                        <name>allure.results.directory</name>
+                        <value>${project.build.directory}/target/allure-results</value>
+                    </property>
+                </systemProperties>
+            </configuration>
+            <!--Зависимость для aspectj-->
+            <dependencies>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>1.9.4</version>
+                </dependency>
+            </dependencies>
         </plugin>
     </plugins>
 
