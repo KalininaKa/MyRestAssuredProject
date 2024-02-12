@@ -108,22 +108,10 @@
                         <name>listener</name>
                         <value>io.qameta.allure.junit4.AllureJunit4</value>
                     </property>
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>target/allure-results</value>
-                        </property>
-                    </systemProperties>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}\allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </properties>
-            </configuration>
-        </plugin>
-
-        <plugin>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-maven</artifactId>
-            <version>2.10.0</version>
-            <configuration>
-                <allureDownloadUrl>https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.zip</allureDownloadUrl>
             </configuration>
         </plugin>
         <plugin>
@@ -146,7 +134,7 @@
                     </property>
                 </systemProperties>
                 <systemPropertyVariables>
-                    <allure.results.directory>target/allure-results</allure.results.directory>
+                    <allure.results.directory>${project.build.directory}\allure-results</allure.results.directory>
                 </systemPropertyVariables>
             </configuration>
         </plugin>
@@ -159,6 +147,11 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-install-plugin</artifactId>
             <version>2.5.2</version>
+        </plugin>
+        <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>2.9</version>
         </plugin>
     </plugins>
 
