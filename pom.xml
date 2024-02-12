@@ -102,6 +102,27 @@
                     <phase>none</phase>
                 </execution>
             </executions>
+            <!--Настраиваем запуск aspectj-->
+            <configuration>
+            <testFailureIgnore>true</testFailureIgnore>
+            <argLine>
+                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"
+            </argLine>
+            <properties>
+                <!--Правила для сбора информации Allure, на которые смотрит aspectj при работе-->
+                <property>
+                    <name>listener</name>
+                    <value>io.qameta.allure.junit4.AllureJunit4</value>
+                </property>
+            </properties>
+            <systemProperties>
+                <!--Результаты Allure складываются в отдельную дирректорию в новом формате-->
+                <property>
+                    <name>allure.results.directory</name>
+                    <value>${project.build.directory}/target/allure-results</value>
+                </property>
+            </systemProperties>
+            </configuration>
         </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
