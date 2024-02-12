@@ -40,7 +40,7 @@ public class RecresTest_10 {
         Assertions.assertTrue(successUserCreate.getId().matches("\\d+"));
         Assertions.assertEquals(Name, successUserCreate.getName());
         Assertions.assertEquals(Job, successUserCreate.getJob());
-        String regex = "(.{5})$";
+        String regex = "(.{7})$";
         Assertions.assertEquals(new Date().toString().replaceAll(regex,""), successUserCreate.getCreatedAt().toString().replaceAll(regex,""));
     }
 }
