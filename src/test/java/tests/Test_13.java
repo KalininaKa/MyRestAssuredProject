@@ -1,4 +1,4 @@
-package api.tests;
+package tests;
 
 
 import api.reqres.specifications.Specifications;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 
-public class RecresTest_13 {
+public class Test_13 {
     private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
     @Test

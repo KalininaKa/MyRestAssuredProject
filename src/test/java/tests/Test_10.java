@@ -1,4 +1,4 @@
-package api.tests;
+package tests;
 
 
 import api.reqres.users.Create;
@@ -14,7 +14,7 @@ import java.util.Date;
 import static io.restassured.RestAssured.given;
 
 
-public class RecresTest_10 {
+public class Test_10 {
     private static String URL = "https://reqres.in/";
     private static String Job = "leader";
     private static String Name = "morpheus";

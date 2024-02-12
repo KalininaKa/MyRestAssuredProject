@@ -1,4 +1,4 @@
-package api.tests;
+package tests;
 
 
 import api.reqres.specifications.Specifications;
@@ -9,16 +9,16 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 
-public class RecresTest_9 {
+public class Test_4 {
     private static String URL = "https://reqres.in/";
-    private static Integer IdNotFound = 23;
+    private static String UserIdNotFound = "23";
     @Test
-    @Tag("@RecresTest_9")
-    @DisplayName("(RecresTest_9) 404 при получении по несуществующему id GET /api/unknown/{id}")
+    @Tag("@RecresTest_4")
+    @DisplayName("(RecresTest_4) 404 при получении по несуществующему id GET api/users/{id}")
     public void singleUserNotFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecNOTFOUND404());
             given().when()
-                .get("api/unknown/" + IdNotFound)
+                .get("api/users/" + UserIdNotFound)
                 .then().log().all();
     }
 }

@@ -1,18 +1,19 @@
-package api.tests;
+package tests;
 
 
 import api.reqres.registration.Register;
 import api.reqres.registration.SuccessUserReg;
 import api.reqres.specifications.Specifications;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-public class RecresTest_2 {
+public class Test_2 {
     private static String URL = "https://reqres.in/";
 
     @Test
@@ -30,9 +31,9 @@ public class RecresTest_2 {
                 .then()
                 .log().all()
                 .extract().as(SuccessUserReg.class);
-        Assertions.assertNotNull(successUserReg.getId());
-        Assertions.assertNotNull(successUserReg.getToken());
-        Assertions.assertEquals(UserId, successUserReg.getId());
-        Assertions.assertEquals(UserPassword, successUserReg.getToken());
+       assertNotNull(successUserReg.getId());
+       assertNotNull(successUserReg.getToken());
+       assertEquals(UserId, successUserReg.getId());
+       assertEquals(UserPassword, successUserReg.getToken());
     }
 }

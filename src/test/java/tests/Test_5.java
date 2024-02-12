@@ -1,4 +1,4 @@
-package api.tests;
+package tests;
 
 
 import api.reqres.colors.Colors;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 
 
-public class RecresTest_5 {
+public class Test_5 {
     private static String URL = "https://reqres.in/";
 
     @Test

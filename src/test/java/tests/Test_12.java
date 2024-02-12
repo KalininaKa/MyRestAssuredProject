@@ -1,4 +1,4 @@
-package api.tests;
+package tests;
 
 
 import api.reqres.specifications.Specifications;
@@ -14,22 +14,22 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
-public class RecresTest_11 {
+public class Test_12 {
     private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
     private static String Job = "zion resident";
     private static String Name = "morpheus";
 
     @Test
-    @Tag("@RecresTest_11")
-    @DisplayName("(RecresTest_11) Изменение существующего юзера PUT api/users/{id}")
-    public void updatedUserTest() {
+    @Tag("@RecresTest_12")
+    @DisplayName("(RecresTest_12) Patch существующего юзера PATCH api/users/{id}")
+    public void patchUserTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         UserUpd newUser = new UserUpd(Name, Job);
         UserUpdResponse newUserResponse = given()
                 .body(newUser)
                 .when()
-                .put("api/users/" + UserId)
+                .patch("api/users/" + UserId)
                 .then()
                 .log().all()
                 .extract().as(UserUpdResponse.class);
@@ -39,7 +39,7 @@ public class RecresTest_11 {
         assertThat(newUserResponse.getJob())
                 .isEqualTo(Job);
         String regex = "(.{7})$";
-        assertThat(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""))
+       assertThat(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""))
                 .isEqualTo(Clock.systemUTC().instant().toString().replaceAll(regex,""));
     }
 }

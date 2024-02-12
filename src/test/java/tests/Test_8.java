@@ -1,4 +1,4 @@
-package api.tests;
+package tests;
 
 
 import api.reqres.colors.Colors;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 
-public class RecresTest_8 {
+public class Test_8 {
     private static String URL = "https://reqres.in/";
     private static Integer Id = 2;
     private static String Name = "fuchsia rose";

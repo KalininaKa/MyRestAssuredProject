@@ -10,11 +10,18 @@
     <packaging>jar</packaging>
 
     <properties>
+        <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
         <aspectj.version>1.8.10</aspectj.version>
         <allure.version>2.13.1</allure.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.1.1</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
@@ -64,6 +71,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
+            <version>2.25.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -89,6 +97,7 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                 </configuration>
+
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
@@ -104,6 +113,15 @@
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                     <allureDownloadUrl>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${allure.version}/allure-commandline-${allure.version}.zip</allureDownloadUrl>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <executable>maven</executable>
                 </configuration>
             </plugin>
         </plugins>

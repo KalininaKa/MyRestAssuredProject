@@ -1,4 +1,4 @@
-package api.tests;
+package tests;
 
 
 import api.reqres.login.Login;
@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
-public class RecresTest_14 {
+public class Test_14 {
     private static String URL = "https://reqres.in/";
 
     @Test
