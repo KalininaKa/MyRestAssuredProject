@@ -18,7 +18,8 @@ public class Test_1 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@RecresTest_1")
+    @Tag("@Recres")
+    @Tag("@API")
     @DisplayName("(RecresTest_1) Аватары содержат айди пользователей")
     public void checkAvatarAndIdTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
