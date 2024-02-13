@@ -46,7 +46,7 @@ node {
 //        }
         stage('Build'){
             steps {
-                bat "mvn clean install -DskipTests"
+                sh "mvn package -DskipTests"
             }
         }
         try {
