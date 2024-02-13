@@ -1,4 +1,5 @@
 task_branch = "${TEST_BRANCH_NAME}"
+tag = "${TAG}"
 def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] : task_branch.trim()
 currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
@@ -19,13 +20,13 @@ node {
             }
         }
 
-        try {
+       /* try {
             parallel getTestStages(["apiTests", "uiTests"])
         } finally {
             stage ("Allure") {
                 generateAllure()
             }
-        }
+        }*/
 
 //        try {
 //            stage("Run tests") {
@@ -43,11 +44,21 @@ node {
 //                generateAllure()
 //            }
 //        }
+
+        try {
+            stage("Run tests") {
+                runTestWithTag("${tag}")
+            }
+        } finally {
+            stage("Allure") {
+                generateAllure()
+            }
+        }
     }
 }
 
 
-def getTestStages(testTags) {
+/* def getTestStages(testTags) {
     def stages = [:]
     testTags.each { tag ->
         stages["${tag}"] = {
@@ -55,7 +66,7 @@ def getTestStages(testTags) {
         }
     }
     return stages
-}
+} */
 
 
 def runTestWithTag(String tag) {
