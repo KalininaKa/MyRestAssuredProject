@@ -1,5 +1,5 @@
 task_branch = "${TEST_BRANCH_NAME}"
-tag = "${TAG}"
+tag_in_jenkins = "${TAG}"
 def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] : task_branch.trim()
 currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
@@ -47,7 +47,7 @@ node {
 
         try {
             stage("Run tests") {
-                runTestWithTag("${tag}")
+                runTestWithTag("${tag_in_jenkins}")
             }
         } finally {
             stage("Allure") {
@@ -56,9 +56,20 @@ node {
         }
     }
 }
+def apiTest = tasks.register("apiTests", Test) {
+    useJUnitPlatform {
+        includeTags "API"
+    }
+}
+
+def uiTest = tasks.register("uiTests", Test) {
+    useJUnitPlatform {
+        includeTags "UI"
+    }
+}
 
 
-/* def getTestStages(testTags) {
+ /*def getTestStages(testTags) {
     def stages = [:]
     testTags.each { tag ->
         stages["${tag}"] = {
