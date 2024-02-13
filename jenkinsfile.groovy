@@ -44,7 +44,11 @@ node {
 //                generateAllure()
 //            }
 //        }
-
+        stage('Build'){
+            steps {
+                bat "mvn clean install -DskipTests"
+            }
+        }
         try {
             stage("Run tests") {
                 runTestWithTag("${tag}")
@@ -71,7 +75,7 @@ node {
 
 def runTestWithTag(String tag) {
     try {
-        labelledShell(label: "Run ${tag}", script: "mvn clean test -D groups=${tag}")
+        labelledShell(label: "Run ${tag}", script: "mvn test -D groups=${tag}")
     } finally {
         echo "some failed tests"
     }
