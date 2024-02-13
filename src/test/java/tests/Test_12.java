@@ -12,6 +12,7 @@ import java.time.Clock;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class Test_12 {
@@ -40,7 +41,7 @@ public class Test_12 {
                 .isEqualTo(Job);
         String regex = "(.{5})$";
         String regex_2 = "(.{8})$";
-        assertThat(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""))
-                .isEqualTo(Clock.systemUTC().instant().toString().replaceAll(regex_2,""));
+        assertEquals(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""),
+                Clock.systemUTC().instant().toString().replaceAll(regex_2,""));
     }
 }
