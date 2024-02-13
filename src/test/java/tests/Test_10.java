@@ -40,7 +40,7 @@ public class Test_10 {
         Assertions.assertTrue(successUserCreate.getId().matches("\\d+"));
         Assertions.assertEquals(Name, successUserCreate.getName());
         Assertions.assertEquals(Job, successUserCreate.getJob());
-        String regex = "(.{7})$";
+        String regex = "(.{9})$";
         Assertions.assertEquals(new Date().toString().replaceAll(regex,""), successUserCreate.getCreatedAt().toString().replaceAll(regex,""));
     }
 }

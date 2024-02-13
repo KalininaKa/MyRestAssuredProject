@@ -38,8 +38,9 @@ public class Test_12 {
                 .isEqualTo(Name);
         assertThat(newUserResponse.getJob())
                 .isEqualTo(Job);
-        String regex = "(.{7})$";
-       assertThat(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""))
-                .isEqualTo(Clock.systemUTC().instant().toString().replaceAll(regex,""));
+        String regex = "(.{5})$";
+        String regex_2 = "(.{8})$";
+        assertThat(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""))
+                .isEqualTo(Clock.systemUTC().instant().toString().replaceAll(regex_2,""));
     }
 }
