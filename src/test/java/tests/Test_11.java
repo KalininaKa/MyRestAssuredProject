@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.time.Clock;
+import java.util.Date;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -39,8 +39,7 @@ public class Test_11 {
                 .isEqualTo(Name);
         assertThat(newUserResponse.getJob())
                 .isEqualTo(Job);
-        String regex = "(.{5})$";
-        String regex_2 = "(.{8})$";
-        assertEquals(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""),Clock.systemUTC().instant().toString().replaceAll(regex_2,""));
+        String regex = "(.{9})$";
+        assertEquals(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""), new Date().toString().replaceAll(regex,""));
     }
 }

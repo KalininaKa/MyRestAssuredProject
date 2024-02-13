@@ -1,23 +1,24 @@
 package api.reqres.users;
 
+import java.util.Date;
+
 public class UserUpdResponse {
-    private String updatedAt;
+    private Date updatedAt;
     private String name;
     private String job;
 
-    public UserUpdResponse(String updatedAt, String name, String job) {
+    public UserUpdResponse(Date updatedAt, String name, String job) {
         this.updatedAt = updatedAt;
         this.name = name;
         this.job = job;
     }
     public UserUpdResponse (){
     }
-
-    public String getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
