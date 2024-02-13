@@ -15,7 +15,7 @@ public class Specifications {
                 .setBaseUri(url)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
-                .addFilter(new AllureRestAssured())
+                //.addFilters(new AllureRestAssured())
                 .build();
     }
 
