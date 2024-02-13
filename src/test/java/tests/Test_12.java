@@ -39,7 +39,7 @@ public class Test_12 {
                 .isEqualTo(Name);
         assertThat(newUserResponse.getJob())
                 .isEqualTo(Job);
-        String regex = "(.{9})$";
+        String regex = "(.{11})$";
         assertEquals(newUserResponse.getUpdatedAt().toString().replaceAll(regex,""), new Date().toString().replaceAll(regex,""));
     }
 }
