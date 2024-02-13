@@ -18,6 +18,7 @@ public class Test_3 {
 
     @Test
     @Tag("@RecresTest_3")
+    @Tag("@API")
     @DisplayName("(RecresTest_3) Не успешная регистрация (отсутствует пароль)")
     public void unSuccessUserRegTest() {
         String ErrorText = "Missing password";

@@ -71,7 +71,7 @@ node {
 
 def runTestWithTag(String tag) {
     try {
-        labelledShell(label: "Run ${tag}", script: "mvn clean test -Dtag=${tag}")
+        labelledShell(label: "Run ${tag}", script: "mvn clean test -D groups=${tag}")
     } finally {
         echo "some failed tests"
     }
