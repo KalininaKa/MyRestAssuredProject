@@ -5,35 +5,36 @@ currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
 
 node {
-    withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"])
-    stages
-            {
-                stage("Checkout Branch") {
-                    if (!"$branch_cutted".contains("master")) {
-                        try {
-                            getProject("$base_git_url", "$branch_cutted")
-                        } catch (err) {
-                            echo "Failed get branch $branch_cutted"
-                            throw ("${err}")
+    withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
+        stages
+                {
+                    stage("Checkout Branch") {
+                        if (!"$branch_cutted".contains("master")) {
+                            try {
+                                getProject("$base_git_url", "$branch_cutted")
+                            } catch (err) {
+                                echo "Failed get branch $branch_cutted"
+                                throw ("${err}")
+                            }
+                        } else {
+                            echo "Current branch is master"
                         }
-                    } else {
-                        echo "Current branch is master"
-                    }
 
-                    stage("Compile code") {
-                        sh "mvn compile"
-                    }
-                    try {
-                        stage("Run tests") {
-                            runTestWithTag("${tag}")
+                        stage("Compile code") {
+                            sh "mvn compile"
                         }
-                    } finally {
-                        stage("Allure") {
-                            generateAllure()
+                        try {
+                            stage("Run tests") {
+                                runTestWithTag("${tag}")
+                            }
+                        } finally {
+                            stage("Allure") {
+                                generateAllure()
+                            }
                         }
                     }
                 }
-            }
+    }
 }
 
        /* try {
