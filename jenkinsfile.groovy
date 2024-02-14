@@ -3,11 +3,7 @@ tag = "${TAG}"
 def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] : task_branch.trim()
 currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
-tools {
-    // Необходимые инструменты
-    maven 'maven_home'
 
-}
 
 node {
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
@@ -46,51 +42,6 @@ node {
                     }
         }
     }
-
-       /* try {
-            parallel getTestStages(["apiTests", "uiTests"])
-        } finally {
-            stage ("Allure") {
-                generateAllure()
-            }
-        }*/
-
-//        try {
-//            stage("Run tests") {
-//                parallel(
-//                        'Api Tests': {
-//                            runTestWithTag("apiTests")
-//                        },
-//                        'Ui Tests': {
-//                            runTestWithTag("uiTests")
-//                        }
-//                )
-//            }
-//        } finally {
-//            stage("Allure") {
-//                generateAllure()
-//            }
-//        }
- /*       stage('Build'){
-            steps {
-                sh "mvn package -DskipTests"
-            }
-        }
-
-    }
-}
-
-
-/* def getTestStages(testTags) {
-    def stages = [:]
-    testTags.each { tag ->
-        stages["${tag}"] = {
-            runTestWithTag(tag)
-        }
-    }
-    return stages
-} */
-
 
 def runTestWithTag(String tag) {
     try {
