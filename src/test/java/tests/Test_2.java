@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Tag("@API")
+@Tag("@POST")
 @DisplayName("(RecresTest_2) Успешная регистрация")
 public class Test_2 {
     private static String URL = "https://reqres.in/";
