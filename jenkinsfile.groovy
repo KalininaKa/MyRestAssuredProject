@@ -5,6 +5,7 @@ currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
 
 node {def mvnHome = tool 'maven_home'
+    def pomfilepath = "https://github.com/KalininaKa/MyRestAssuredProject/blob/35c5b94591e46a7dc95a829e275beab7bd9a20c7/pom.xml"
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
         stage("Checkout Branch") {
             if (!"$branch_cutted".contains("master")) {
@@ -20,7 +21,7 @@ node {def mvnHome = tool 'maven_home'
         }
                     try {
                         stage("Run tests") {
-                            mvn - f ("https://github.com/KalininaKa/MyRestAssuredProject/blob/35c5b94591e46a7dc95a829e275beab7bd9a20c7/pom.xml") compile
+                            mvn - f (pomfilepath) compile
                             echo "${mvnHome}"
                             sh "${mvnHome}/bin/mvn test"
                             runTestWithTag("${tag}")
