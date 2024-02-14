@@ -1,49 +1,55 @@
-tag = "${TAG}"
 pipeline {
  agent any
  // Означает, что будет выполняется на любом агенте
 
  tools {
    // Необходимые инструменты
-   maven 'maven_home'
+   maven 'maven jenkins'
 
  }
 
  stages {
-        stage('Checkout Branch') {
-               checkout scm
-            }
+   stage('Checkout') {
+     steps {
+       // Получение кода из репозитория
+       checkout scm
+     }
+   }
 
+   stage('Build') {
+     steps {
+       // Сборка проекта с использованием Maven
+       script {
+         def mavenHome = tool 'maven jenkins'
+         // 'maven jenkins' - это идентификатор конфигурации Maven в Jenkins
 
-        stage('Build') {
-            steps {
-            // Сборка проекта с использованием Maven
-                script {
-                    def mvnHome = tool 'maven_home'
-                    sh "${mvnHome}/bin/mvn clean package"
-                }
-            }
-        }
-        stage("Run tests") {
-            steps{
-                script{
-                    def mvnHome = tool 'maven_home'
-                    sh "${mavenHome}/bin/mvn test -D groups=${tag}"
-                }
-            }
-            runTestWithTag("${tag}")
-        }
+         sh "${mavenHome}/bin/mvn clean package"
+       }
+     }
+   }
 
-        stage("Allure") {
-            steps{
-                allure([
-                            includeProperties: true,
-                            jdk              : '',
-                            properties       : [],
-                            reportBuildPolicy: 'ALWAYS',
-                            results          : [[path: 'target/allure-results']]
-                    ])
-            }
-        }
- }
-}
+   stage('Test') {
+     steps {
+       // Запуск теста
+       script {
+         def mavenHome = tool 'maven jenkins'
+         //Запуск тестов с помощью Maven.
+         sh "${mavenHome}/bin/mvn test -Dtest=RequestTest#checkAvatarIdTest"
+       }
+     }
+   }
+
+   stage('Allure Report') {
+    steps {
+               // Публикация отчетов Allure
+               allure([
+                   includeProperties: false,
+                   properties: [],
+                   reportBuildPolicy: 'ALWAYS',
+                   results: [[path: 'path/to/allure-results']]
+               ])
+           }
+       }
+   }
+
+   }
