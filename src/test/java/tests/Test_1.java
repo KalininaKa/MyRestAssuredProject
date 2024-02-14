@@ -11,7 +11,6 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 
 @Tag("@API")
-@Tag("@GET")
 @DisplayName("(RecresTest_1) Аватары содержат айди пользователей")
 public class Test_1 {
     private static String URL = "https://reqres.in/";
