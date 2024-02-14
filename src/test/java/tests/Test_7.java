@@ -3,14 +3,16 @@ package tests;
 
 import api.reqres.specifications.Specifications;
 import api.reqres.users.UserData;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
 
-
+@Tags({
+        @Tag("@API"),
+        @Tag("@GET"),
+        @Tag("@Recres")
+})
+@DisplayName("(RecresTest_7) Получение существующего юзера")
 public class Test_7 {
     private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
@@ -20,10 +22,6 @@ public class Test_7 {
     private static String Avatar = "https://reqres.in/img/faces/2-image.jpg";
 
     @Test
-    @Tag("@API")
-    @Tag("@GET")
-    @Tag("@Recres")
-    @DisplayName("(RecresTest_7) Получение существующего юзера")
     public void singleUserFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         UserData user = given()

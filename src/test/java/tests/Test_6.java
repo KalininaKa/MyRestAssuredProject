@@ -3,24 +3,22 @@ package tests;
 
 import api.reqres.specifications.Specifications;
 import api.reqres.users.UserData;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-
+@Tags({
+        @Tag("@API"),
+        @Tag("@GET"),
+        @Tag("@Recres")
+})
+@DisplayName("(RecresTest_6) Почта оканчиваются на reqres.in")
 public class Test_6 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@API")
-    @Tag("@GET")
-    @Tag("@Recres")
-    @DisplayName("(RecresTest_6) Почта оканчиваются на reqres.in")
     public void checkEmailTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
 

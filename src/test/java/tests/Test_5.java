@@ -3,10 +3,7 @@ package tests;
 
 import api.reqres.colors.Colors;
 import api.reqres.specifications.Specifications;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,14 +11,16 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 
 
+@Tags({
+        @Tag("@API"),
+        @Tag("@GET"),
+        @Tag("@Recres")
+})
+@DisplayName("(RecresTest_5) Года правильно отсортированы")
 public class Test_5 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@API")
-    @Tag("@GET")
-    @Tag("@Recres")
-    @DisplayName("(RecresTest_5) Года правильно отсортированы")
     public void checkSortedYearsTest(){
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         List<Colors> data = given()

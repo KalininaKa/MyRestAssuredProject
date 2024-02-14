@@ -6,20 +6,22 @@ import api.reqres.login.LoginSuccessful;
 import api.reqres.specifications.Specifications;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-
+@Tags({
+        @Tag("@API"),
+        @Tag("@POST"),
+        @Tag("@Recres")
+})
+@DisplayName("(RecresTest_14) LOGIN-SUCCESSFUL")
 public class Test_14 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@API")
-    @Tag("@POST")
-    @Tag("@Recres")
-    @DisplayName("(RecresTest_14) LOGIN-SUCCESSFUL")
     public void LoginSuccessfulTest() {
         String Email = "eve.holt@reqres.in";
         String Password = "cityslicka";

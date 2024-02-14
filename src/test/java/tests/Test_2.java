@@ -6,21 +6,23 @@ import api.reqres.registration.SuccessUserReg;
 import api.reqres.specifications.Specifications;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
+@Tags({
+        @Tag("@API"),
+        @Tag("@POST"),
+        @Tag("@Recres")
+})
+@DisplayName("(RecresTest_2) Успешная регистрация")
 public class Test_2 {
     private static String URL = "https://reqres.in/";
 
     @Tag("@API")
-    @Tag("@POST")
-    @Tag("@Recres")
-    @Test
-    @DisplayName("(RecresTest_2) Успешная регистрация")
     public void successUserRegTest() {
         Integer UserId = 4;
         String UserPassword = "QpwL5tke4Pnpja7X4";

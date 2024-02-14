@@ -4,25 +4,23 @@ package tests;
 import api.reqres.users.Create;
 import api.reqres.specifications.Specifications;
 import api.reqres.users.SuccessUserCreated;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Date;
 
 import static io.restassured.RestAssured.given;
 
-
+@Tags({
+        @Tag("@API"),
+        @Tag("@POST"),
+        @Tag("@Recres")
+})
+@DisplayName("(RecresTest_10) Успешное создание юзера POST /api/users")
 public class Test_10 {
     private static String URL = "https://reqres.in/";
     private static String Job = "leader";
     private static String Name = "morpheus";
     @Test
-    @Tag("@API")
-    @Tag("@POST")
-    @Tag("@Recres")
-    @DisplayName("(RecresTest_10) Успешное создание юзера POST /api/users")
     public void successUserCreateTest() {
 
 
