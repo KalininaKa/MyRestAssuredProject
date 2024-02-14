@@ -32,10 +32,9 @@ pipeline {
      steps {
        // Запуск теста
        script {
-         taf = "${TAG}"
          def mavenHome = tool 'maven jenkins'
          //Запуск тестов с помощью Maven.
-         sh "${mavenHome}/bin/mvn test -D groups=${tag}"
+         sh "${mavenHome}/bin/mvn test -D groups=@API"
        }
      }
    }
