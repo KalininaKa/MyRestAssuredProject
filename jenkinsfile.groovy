@@ -6,8 +6,6 @@ base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
 
 node {
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
-        stages
-                {
                     stage("Checkout Branch") {
                         if (!"$branch_cutted".contains("master")) {
                             try {
@@ -33,7 +31,6 @@ node {
                             }
                         }
                     }
-                }
     }
 }
 
