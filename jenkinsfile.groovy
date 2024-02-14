@@ -18,10 +18,6 @@ node {
                 echo "Current branch is master"
             }
         }
-        stage("Compile code") {
-            sh "mvn compile"
-        }
-                {
                     try {
                         stage("Run tests") {
                             runTestWithTag("${tag}")
@@ -31,8 +27,7 @@ node {
                             generateAllure()
                         }
                     }
-                }
-    }
+        }
     }
 
        /* try {
