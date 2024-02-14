@@ -17,8 +17,8 @@ pipeline {
  }
 
  stages {
-        stage("Checkout Branch") {
-               if (!"$branch_cutted".contains("master")) {
+        stage('Checkout Branch') {
+               if (!'$branch_cutted'.contains('master')) {
                    try {
                        cleanWs()
                            checkout scm: [
