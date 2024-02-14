@@ -45,7 +45,7 @@ node {
 def runTestWithTag(String tag) {
     try {
         echo "${tag}"
-        sh "${mvnHome}/bin/mvn test -D groups=${tag}"
+        sh "${mvnHome}/bin/mvn clean test -D groups=${tag}"
     } finally {
         echo "some failed tests"
     }
