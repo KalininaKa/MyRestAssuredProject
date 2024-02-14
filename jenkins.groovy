@@ -24,9 +24,8 @@ node {
 
         def mvnHome = tool 'maven jenkins'
 
-        stage('Build') {
+        stage("Build") {
                 // Сборка проекта с использованием Maven
-                script
                 echo "${mvnHome}"
                 sh "${mvnHome}/bin/mvn clean package"
         }
