@@ -24,16 +24,16 @@ node {
 
         def mvnHome = tool 'maven jenkins'
 
-       /* stage("Build") {
+        stage("Build") {
                 // Сборка проекта с использованием Maven
                 echo "${mvnHome}"
                 sh "${mvnHome}/bin/mvn clean package"
-        }*/
+        }
 
         try {
             stage("Run tests") {
                 echo "${tag}"
-                sh "${mavenHome}/bin/mvn clean test -D groups=${tag}"
+                sh "${mvnHome}/bin/mvn clean test -D groups=${tag}"
             }
         } finally {
             stage("Allure") {
