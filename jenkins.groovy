@@ -22,10 +22,10 @@ node {
 
         def mvnHome = tool 'maven jenkins'
 
-        stage("Build") {
-                echo "${mvnHome}"
-                sh "${mvnHome}/bin/mvn clean package"
-        }
+       // stage("Build") {
+         //       echo "${mvnHome}"
+           //     sh "${mvnHome}/bin/mvn clean package"
+      //  }
 
         try {
             stage("Run tests") {
