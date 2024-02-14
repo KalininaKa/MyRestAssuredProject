@@ -20,7 +20,13 @@ pipeline {
             base_url="${base_git_url}"
                if (!"$branch_cutted".contains("master")) {
                    try {
-                       getProject("$base_git_url", "$branch_cutted")
+                       cleanWs()
+                           checkout scm: [
+                                   $class           : 'GitSCM', branches: [[name: '$branch_cutted']],
+                                   userRemoteConfigs: [[
+                                                               url: '$base_git_url'
+                                                       ]]
+                           ]
                    } catch (err) {
                        echo "Failed get branch $branch_cutted"
                        throw ("${err}")
@@ -64,14 +70,4 @@ pipeline {
             }
         }
  }
-
-def getProject(String repo, String branch) {
-    cleanWs()
-    checkout scm: [
-            $class           : 'GitSCM', branches: [[name: branch]],
-            userRemoteConfigs: [[
-                                        url: repo
-                                ]]
-    ]
-}
 }
