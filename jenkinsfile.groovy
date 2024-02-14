@@ -4,7 +4,7 @@ def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] :
 currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
 
-node {def mvnHome = tool 'Maven'
+node {def mvnHome = tool 'maven_home'
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
         stage("Checkout Branch") {
             if (!"$branch_cutted".contains("master")) {
