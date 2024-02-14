@@ -17,18 +17,18 @@ node {
                 }
             } else {
                 echo "Current branch is master"
+                echo "${base_git_url}"
+                echo "${branch_cutted}"
             }
         }
 
         def mvnHome = tool 'maven jenkins'
 
         stage('Build') {
-            steps {
                 // Сборка проекта с использованием Maven
                 script
                 echo "${mvnHome}"
                 sh "${mvnHome}/bin/mvn clean package"
-            }
         }
 
 
