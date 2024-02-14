@@ -24,7 +24,8 @@ node {
 
         stage("Build") {
                 // Сборка проекта с использованием Maven
-            runBuildMavenProject("${mvnHome}")
+                echo "${mvnHome}"
+                sh "${mvnHome}/bin/mvn package -DskipTests"
         }
 
         try {
@@ -42,7 +43,7 @@ node {
     }//withEnv
 }//node
 
-def runBuildMavenProject(String mvnHome) {
+def runBuildMavenProject() {
         echo "${mvnHome}"
         sh "${mvnHome}/bin/mvn package -DskipTests"
     }
