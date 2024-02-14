@@ -16,7 +16,9 @@ public class Test_17 {
     private static Integer Page = 2;
 
     @Test
-    @Tag("@RecresTest_17")
+    @Tag("@API")
+    @Tag("@GET")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_17) Получение существующего юзера (проверка что юзер с именем Tobias имеет фамилию Funke)")
     public void singleUserFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());

@@ -17,8 +17,9 @@ public class Test_2 {
     private static String URL = "https://reqres.in/";
 
     @Test
+    @Tag("@API")
+    @Tag("@POST")
     @Tag("@Recres")
-    @Tag("@UI")
     @DisplayName("(RecresTest_2) Успешная регистрация")
     public void successUserRegTest() {
         Integer UserId = 4;

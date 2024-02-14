@@ -17,8 +17,9 @@ public class Test_3 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@RecresTest_3")
     @Tag("@API")
+    @Tag("@POST")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_3) Не успешная регистрация (отсутствует пароль)")
     public void unSuccessUserRegTest() {
         String ErrorText = "Missing password";

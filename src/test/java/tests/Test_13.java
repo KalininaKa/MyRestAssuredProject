@@ -13,7 +13,9 @@ public class Test_13 {
     private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
     @Test
-    @Tag("@RecresTest_12")
+    @Tag("@API")
+    @Tag("@DELETE")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_12) Удаление существующего юзера")
     public void deleteUserTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK204());

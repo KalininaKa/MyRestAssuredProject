@@ -19,7 +19,9 @@ public class Test_10 {
     private static String Job = "leader";
     private static String Name = "morpheus";
     @Test
-    @Tag("@RecresTest_10")
+    @Tag("@API")
+    @Tag("@POST")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_10) Успешное создание юзера POST /api/users")
     public void successUserCreateTest() {
 

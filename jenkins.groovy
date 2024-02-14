@@ -4,7 +4,6 @@ def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] :
 currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
 
-
 node {
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
         stage("Checkout Branch") {
@@ -19,8 +18,6 @@ node {
                 echo "Current branch is master"
             }
         }
-
-
 
         stage("Build") {
             def mvnHome = tool 'maven jenkins'
@@ -37,11 +34,8 @@ node {
                 generateAllure()
             }
         }
-
-
-
-    }//withEnv
-}//node
+    }
+}
 
 def runTestWithTag(String tag) {
     try {

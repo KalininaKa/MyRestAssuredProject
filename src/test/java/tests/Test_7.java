@@ -20,7 +20,9 @@ public class Test_7 {
     private static String Avatar = "https://reqres.in/img/faces/2-image.jpg";
 
     @Test
-    @Tag("@RecresTest_7")
+    @Tag("@API")
+    @Tag("@GET")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_7) Получение существующего юзера")
     public void singleUserFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());

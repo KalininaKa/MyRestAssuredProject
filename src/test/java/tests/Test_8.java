@@ -20,7 +20,9 @@ public class Test_8 {
     private static String PantoneValue = "17-2031";
 
     @Test
-    @Tag("@RecresTest_8")
+    @Tag("@API")
+    @Tag("@GET")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_8) GET /api/unknown/{id}")
     public void userFoundColorsTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());

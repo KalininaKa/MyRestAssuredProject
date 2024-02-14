@@ -16,7 +16,9 @@ public class Test_15 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@RecresTest_15")
+    @Tag("@API")
+    @Tag("@POST")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_15) LOGIN-UNSUCCESSFUL (отсутствует пароль)")
     public void LoginUnSuccessfulTest() {
         String Email = "peter@klaven";

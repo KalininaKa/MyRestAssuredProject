@@ -22,7 +22,9 @@ public class Test_11 {
     private static String Name = "morpheus";
 
     @Test
-    @Tag("@RecresTest_11")
+    @Tag("@API")
+    @Tag("@PUT")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_11) Изменение существующего юзера PUT api/users/{id}")
     public void updatedUserTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());

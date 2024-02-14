@@ -18,7 +18,9 @@ public class Test_5 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@RecresTest_5")
+    @Tag("@API")
+    @Tag("@GET")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_5) Года правильно отсортированы")
     public void checkSortedYearsTest(){
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());

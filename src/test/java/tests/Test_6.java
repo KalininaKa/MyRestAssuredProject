@@ -17,7 +17,9 @@ public class Test_6 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@RecresTest_6")
+    @Tag("@API")
+    @Tag("@GET")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_6) Почта оканчиваются на reqres.in")
     public void checkEmailTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());

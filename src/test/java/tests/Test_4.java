@@ -13,7 +13,9 @@ public class Test_4 {
     private static String URL = "https://reqres.in/";
     private static String UserIdNotFound = "23";
     @Test
-    @Tag("@RecresTest_4")
+    @Tag("@API")
+    @Tag("@GET")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_4) 404 при получении по несуществующему id GET api/users/{id}")
     public void singleUserNotFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecNOTFOUND404());

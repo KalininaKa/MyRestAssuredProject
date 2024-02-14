@@ -16,7 +16,9 @@ public class Test_14 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Tag("@RecresTest_14")
+    @Tag("@API")
+    @Tag("@POST")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_14) LOGIN-SUCCESSFUL")
     public void LoginSuccessfulTest() {
         String Email = "eve.holt@reqres.in";

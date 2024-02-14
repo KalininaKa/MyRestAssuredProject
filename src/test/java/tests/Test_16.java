@@ -15,7 +15,9 @@ public class Test_16 {
     private static Integer UserId = 2;
 
     @Test
-    @Tag("@RecresTest_16")
+    @Tag("@API")
+    @Tag("@GET")
+    @Tag("@Recres")
     @DisplayName("(RecresTest_16) Получение существующего юзера (проверка по schema json в ответе)")
     public void singleUserFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
