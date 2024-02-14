@@ -20,7 +20,7 @@ node {
             }
         }
 
-        def mvnHome = tool 'maven_home'
+        def mvnHome = tool 'maven jenkins'
 
         stage('Build') {
             steps {
