@@ -3,9 +3,6 @@ tag = "${TAG}"
 def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] : task_branch.trim()
 currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
-environment {
-    PATH =/usr/local/bin/mvn:$PATH
-}
 
 node {
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"])
