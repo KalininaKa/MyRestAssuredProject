@@ -32,7 +32,8 @@ node {
 
         try {
             stage("Run tests") {
-                runTestWithTag("${tag}")
+                echo "${tag}"
+                sh "${mavenHome}/bin/mvn clean test -D groups=${tag}"
             }
         } finally {
             stage("Allure") {
@@ -46,14 +47,14 @@ node {
 }//node
 
 
-def runTestWithTag(String tag) {
+/*def runTestWithTag(String tag) {
     try {
         echo "${tag}"
         sh "${mavenHome}/bin/mvn clean test -D groups=${tag}"
     } finally {
         echo "some failed tests"
     }
-}
+}*/
 
 def getProject(String repo, String branch) {
     cleanWs()
