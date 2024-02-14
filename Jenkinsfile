@@ -74,5 +74,4 @@ def getProject(String repo, String branch) {
                                 ]]
     ]
 }
-
-
+}
