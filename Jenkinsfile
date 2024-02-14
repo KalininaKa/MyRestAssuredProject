@@ -32,9 +32,10 @@ pipeline {
      steps {
        // Запуск теста
        script {
+         taf = "${TAG}"
          def mavenHome = tool 'maven jenkins'
          //Запуск тестов с помощью Maven.
-         sh "${mavenHome}/bin/mvn test -Dtest=RequestTest#checkAvatarIdTest"
+         sh "${mavenHome}/bin/mvn test -D groups=${tag}"
        }
      }
    }
@@ -42,12 +43,13 @@ pipeline {
    stage('Allure Report') {
     steps {
                // Публикация отчетов Allure
-               allure([
-                   includeProperties: false,
-                   properties: [],
-                   reportBuildPolicy: 'ALWAYS',
-                   results: [[path: 'path/to/allure-results']]
-               ])
+              allure([
+                          includeProperties: true,
+                          jdk              : '',
+                          properties       : [],
+                          reportBuildPolicy: 'ALWAYS',
+                          results          : [[path: 'target/allure-results']]
+                  ])
            }
        }
    }
