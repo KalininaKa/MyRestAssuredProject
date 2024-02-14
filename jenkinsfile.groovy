@@ -21,6 +21,7 @@ node {def mvnHome = tool 'maven_home'
                     try {
                         stage("Run tests") {
                             echo "${mvnHome}"
+                            sh "${mvnHome}/bin/mvn test"
                             runTestWithTag("${tag}")
                         }
                     } finally {
