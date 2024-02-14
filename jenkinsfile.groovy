@@ -6,7 +6,13 @@ base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
 
 
 node {
-    withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
+    withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"])
+    tools {
+        // Необходимые инструменты
+        maven 'maven_home'
+
+    }
+            {
         stage("Checkout Branch") {
             if (!"$branch_cutted".contains("master")) {
                 try {
@@ -17,6 +23,8 @@ node {
                 }
             } else {
                 echo "Current branch is master"
+                echo "${base_git_url}"
+                echo "${branch_cutted}"
             }
         }
 
@@ -25,6 +33,7 @@ node {
                 // Сборка проекта с использованием Maven
                 script {
                     def mvnHome = tool 'maven_home'
+                    echo "${mvnHome}"
                     sh "${mvnHome}/bin/mvn clean package"
                 }
             }
