@@ -17,10 +17,10 @@ import static io.restassured.RestAssured.given;
 public class Test_1 {
     private static String URL = "https://reqres.in/";
 
-    @Test
     @Tag("@API")
     @Tag("@GET")
     @Tag("@Recres")
+    @Test
     @DisplayName("(RecresTest_1) Аватары содержат айди пользователей")
     public void checkAvatarAndIdTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());

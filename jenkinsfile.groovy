@@ -22,7 +22,7 @@ node {
         stage("Build") {
             def mvnHome = tool 'maven jenkins'
             echo "${mvnHome}"
-            sh "${mvnHome}/bin/mvn clean package"
+            sh "${mvnHome}/bin/mvn clean package -DskipTests"
         }
 
         try {

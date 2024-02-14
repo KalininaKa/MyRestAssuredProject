@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class Test_2 {
     private static String URL = "https://reqres.in/";
 
-    @Test
     @Tag("@API")
     @Tag("@POST")
     @Tag("@Recres")
+    @Test
     @DisplayName("(RecresTest_2) Успешная регистрация")
     public void successUserRegTest() {
         Integer UserId = 4;
