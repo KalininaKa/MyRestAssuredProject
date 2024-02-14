@@ -25,7 +25,7 @@ node {
         stage("Build") {
                 // Сборка проекта с использованием Maven
                 echo "${mvnHome}"
-                sh "${mvnHome}/bin/mvn package -DskipTests"
+                sh "${mvnHome}/bin/mvn clean package -DskipTests"
         }
 
         try {
@@ -43,15 +43,10 @@ node {
     }//withEnv
 }//node
 
-def runBuildMavenProject() {
-        echo "${mvnHome}"
-        sh "${mvnHome}/bin/mvn package -DskipTests"
-    }
-
 def runTestWithTag(String tag) {
     try {
         echo "${tag}"
-        sh "${mvnHome}/bin/mvn clean test -D groups=${tag}"
+        sh "${mvnHome}/bin/mvn test -D groups=${tag}"
     } finally {
         echo "some failed tests"
     }
