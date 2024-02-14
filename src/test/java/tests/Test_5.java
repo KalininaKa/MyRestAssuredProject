@@ -11,11 +11,7 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@GET"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_5) Года правильно отсортированы")
 public class Test_5 {
     private static String URL = "https://reqres.in/";

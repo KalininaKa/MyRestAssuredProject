@@ -15,11 +15,7 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@PATCH"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_12) Patch существующего юзера PATCH api/users/{id}")
 public class Test_12 {
     private static String URL = "https://reqres.in/";

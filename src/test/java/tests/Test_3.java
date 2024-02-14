@@ -13,11 +13,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@POST"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_3) Не успешная регистрация (отсутствует пароль)")
 public class Test_3 {
     private static String URL = "https://reqres.in/";

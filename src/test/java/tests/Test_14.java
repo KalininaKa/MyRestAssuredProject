@@ -12,11 +12,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@POST"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_14) LOGIN-SUCCESSFUL")
 public class Test_14 {
     private static String URL = "https://reqres.in/";

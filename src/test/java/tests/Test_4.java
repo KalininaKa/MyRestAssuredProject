@@ -9,11 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@GET"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_4) 404 при получении по несуществующему id GET api/users/{id}")
 public class Test_4 {
     private static String URL = "https://reqres.in/";

@@ -10,11 +10,7 @@ import java.util.Date;
 
 import static io.restassured.RestAssured.given;
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@POST"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_10) Успешное создание юзера POST /api/users")
 public class Test_10 {
     private static String URL = "https://reqres.in/";

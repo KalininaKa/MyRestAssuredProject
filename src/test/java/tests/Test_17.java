@@ -11,11 +11,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@GET"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_17) Получение существующего юзера (проверка что юзер с именем Tobias имеет фамилию Funke)")
 public class Test_17 {
     private static String URL = "https://reqres.in/";

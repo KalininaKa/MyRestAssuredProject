@@ -9,11 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@DELETE"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_12) Удаление существующего юзера")
 public class Test_13 {
     private static String URL = "https://reqres.in/";

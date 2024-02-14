@@ -27,9 +27,7 @@ node {
 
         try {
             stage("Run tests") {
-                def mvnHome = tool 'maven jenkins'
-                echo "${tag}"
-                sh "${mvnHome}/bin/mvn test -D groups=${tag}"
+                runTestWithTag("${tag}")
             }
         } finally {
             stage("Allure") {
@@ -39,7 +37,7 @@ node {
     }
 }
 
-/*def runTestWithTag(String tag) {
+def runTestWithTag(String tag) {
     try {
         def mvnHome = tool 'maven jenkins'
         echo "${tag}"
@@ -47,7 +45,7 @@ node {
     } finally {
         echo "some failed tests"
     }
-}*/
+}
 
 def getProject(String repo, String branch) {
     cleanWs()

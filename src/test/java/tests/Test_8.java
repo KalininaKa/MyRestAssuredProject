@@ -7,11 +7,7 @@ import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
 
-@Tags({
-        @Tag("@API"),
-        @Tag("@GET"),
-        @Tag("@Recres")
-})
+@Tag("@API")
 @DisplayName("(RecresTest_8) GET /api/unknown/{id}")
 public class Test_8 {
     private static String URL = "https://reqres.in/";
