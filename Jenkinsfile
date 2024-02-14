@@ -15,8 +15,9 @@ pipeline {
  }
 
  stages {
-    withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
         stage("Checkout Branch") {
+            branch="${branch_cutted}"
+            base_url="${base_git_url}"
                if (!"$branch_cutted".contains("master")) {
                    try {
                        getProject("$base_git_url", "$branch_cutted")
@@ -29,35 +30,40 @@ pipeline {
                    echo "${base_git_url}"
                    echo "${branch_cutted}"
                }
-        }
-    }
+            }
+
 
         stage('Build') {
             steps {
             // Сборка проекта с использованием Maven
                 script {
                     def mvnHome = tool 'maven_home'
-
                     sh "${mvnHome}/bin/mvn clean package"
                 }
             }
         }
         stage("Run tests") {
+            steps{
+                script{
+                    def mvnHome = tool 'maven_home'
+                    sh "${mavenHome}/bin/mvn test -D groups=${tag}"
+                }
+            }
             runTestWithTag("${tag}")
         }
 
         stage("Allure") {
-            generateAllure()
+            steps{
+                allure([
+                            includeProperties: true,
+                            jdk              : '',
+                            properties       : [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results          : [[path: 'target/allure-results']]
+                    ])
+            }
         }
  }
-}
-def runTestWithTag(String tag) {
-    try {
-        labelledShell(label: "Run ${tag}", script: "mvn clean test -D groups=${tag}")
-    } finally {
-        echo "some failed tests"
-    }
-}
 
 def getProject(String repo, String branch) {
     cleanWs()
@@ -69,13 +75,4 @@ def getProject(String repo, String branch) {
     ]
 }
 
-def generateAllure() {
-    allure([
-            includeProperties: true,
-            jdk              : '',
-            properties       : [],
-            reportBuildPolicy: 'ALWAYS',
-            results          : [[path: 'target/allure-results']]
-    ])
-}
 
