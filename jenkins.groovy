@@ -23,9 +23,8 @@ node {
         def mvnHome = tool 'maven jenkins'
 
         stage("Build") {
-                // Сборка проекта с использованием Maven
                 echo "${mvnHome}"
-                sh "${mvnHome}/bin/mvn clean package -Dmaven.test.skip.exec"
+                sh "${mvnHome}/bin/mvn clean package -DskipTests"
         }
 
         try {
