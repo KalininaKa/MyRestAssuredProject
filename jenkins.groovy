@@ -49,7 +49,7 @@ node {
 def runTestWithTag(String tag) {
     try {
         echo "${tag}"
-        sh "${mavenHome}/bin/mvn test -D groups=${tag}"
+        sh "${mavenHome}/bin/mvn clean test -D groups=${tag}"
     } finally {
         echo "some failed tests"
     }
@@ -71,6 +71,6 @@ def generateAllure() {
             jdk              : '',
             properties       : [],
             reportBuildPolicy: 'ALWAYS',
-            results          : [[path: 'build/allure-results']]
+            results          : [[path: 'target/allure-results']]
     ])
 }
