@@ -20,6 +20,7 @@ node {def mvnHome = tool 'maven_home'
         }
                     try {
                         stage("Run tests") {
+                            mvn - f ("https://github.com/KalininaKa/MyRestAssuredProject/blob/35c5b94591e46a7dc95a829e275beab7bd9a20c7/pom.xml") compile
                             echo "${mvnHome}"
                             sh "${mvnHome}/bin/mvn test"
                             runTestWithTag("${tag}")
