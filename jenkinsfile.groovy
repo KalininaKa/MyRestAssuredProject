@@ -41,7 +41,7 @@ def runTestWithTag(String tag) {
     try {
         def mvnHome = tool 'maven jenkins'
         echo "${tag}"
-        sh "${mvnHome}/bin/mvn test -D groups=${tag}"
+        sh "${mvnHome}/bin/mvn clean test -D groups=${tag}"
     } finally {
         echo "some failed tests"
     }
