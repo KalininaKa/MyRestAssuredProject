@@ -17,8 +17,6 @@ node {
                 }
             } else {
                 echo "Current branch is master"
-                echo "${base_git_url}"
-                echo "${branch_cutted}"
             }
         }
 
@@ -26,14 +24,12 @@ node {
 
         stage("Build") {
                 // Сборка проекта с использованием Maven
-                echo "${mvnHome}"
-                sh "${mvnHome}/bin/mvn clean package"
+            runBuildMavenProject()
         }
 
         try {
             stage("Run tests") {
-                echo "${tag}"
-                sh "${mvnHome}/bin/mvn clean test -D groups=${tag}"
+                runTestWithTag("${tag}")
             }
         } finally {
             stage("Allure") {
@@ -46,15 +42,19 @@ node {
     }//withEnv
 }//node
 
+def runBuildMavenProject() {
+        echo "${mvnHome}"
+        sh "${mvnHome}/bin/mvn package -DskipTests"
+    }
 
-/*def runTestWithTag(String tag) {
+def runTestWithTag(String tag) {
     try {
         echo "${tag}"
-        sh "${mavenHome}/bin/mvn clean test -D groups=${tag}"
+        sh "${mvnHome}/bin/mvn clean test -D groups=${tag}"
     } finally {
         echo "some failed tests"
     }
-}*/
+}
 
 def getProject(String repo, String branch) {
     cleanWs()
