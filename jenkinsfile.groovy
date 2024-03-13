@@ -1,21 +1,24 @@
-task_branch = "${TEST_BRANCH_NAME}"
-tag = "${TAG}"
+task_branch = "${TEST_BRANCH_NAME}" //переменная, которая задается из дженкинса (имя ветки)
+tag = "${TAG}" //тег для запуска тестов, задается из дженкинса
 def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] : task_branch.trim()
-currentBuild.displayName = "$branch_cutted"
-base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git"
+//если ветка, которую мы вписали содержит origin, то разделяем слешем и берем часть после слеша, если щкшпшт не содержит то берем как есть
+currentBuild.displayName = "$branch_cutted" // то что отображается в дженкинсе в качестве активной джобы, (передаем название ветки)
+base_git_url = "https://github.com/KalininaKa/MyRestAssuredProject.git" //откуда проекит
 
-node {
-    withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
-        stage("Checkout Branch") {
+node { // исполнение пайплайна и что в нем должно содержаться
+    withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"])// передаем переменные которые хотим использовать
+            {
+        stage("Checkout Branch") //Получение кода из репы. Выбираем ветку, если ветка не мастер, то скачиваем проект
+                {
             if (!"$branch_cutted".contains("master")) {
                 try {
                     getProject("$base_git_url", "$branch_cutted")
                 } catch (err) {
-                    echo "Failed get branch $branch_cutted"
+                    echo "Failed get branch $branch_cutted" // если скачать не получилось - показать ошибку
                     throw ("${err}")
                 }
             } else {
-                echo "Current branch is master"
+                echo "Current branch is master" //если ветка мастер
             }
         }
 
@@ -23,15 +26,15 @@ node {
             def mvnHome = tool 'maven jenkins'
             echo "${mvnHome}"
             sh "${mvnHome}/bin/mvn clean package"
-        }
+        } //сборка проекта с помощью maven
 
         try {
             stage("Run tests") {
-                runTestWithTag("${tag}")
+                runTestWithTag("${tag}") //запуск тестов с тегом
             }
         } finally {
             stage("Allure") {
-                generateAllure()
+                generateAllure() //генерация отчета Allure
             }
         }
     }
@@ -45,7 +48,8 @@ def runTestWithTag(String tag) {
     } finally {
         echo "some failed tests"
     }
-}
+}//запуск тестов с помощью Maven по тегу
+
 
 def getProject(String repo, String branch) {
     cleanWs()
@@ -55,7 +59,7 @@ def getProject(String repo, String branch) {
                                         url: repo
                                 ]]
     ]
-}
+} //скачиваем проект
 
 def generateAllure() {
     allure([
@@ -65,4 +69,4 @@ def generateAllure() {
             reportBuildPolicy: 'ALWAYS',
             results          : [[path: 'target/allure-results']]
     ])
-}
+} //генерация отчета
