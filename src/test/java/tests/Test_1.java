@@ -4,6 +4,7 @@ package tests;
 
 import api.reqres.specifications.Specifications;
 import api.reqres.users.UserData;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
@@ -16,6 +17,12 @@ public class Test_1 {
     private static String URL = "https://reqres.in/";
 
     @Test
+    @Description(value = "(RecresTest_1) Аватары содержат айди пользователей")
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.NORMAL)
+    @Issue(value = "UT-4627")
+    @Step("Проверка, что аватары содержат айди пользователей")
     public void checkAvatarAndIdTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
 
