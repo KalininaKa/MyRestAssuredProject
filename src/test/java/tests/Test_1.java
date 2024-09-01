@@ -12,13 +12,13 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 
 @Tag("@API")
-@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-@Owner(value = "Калинина Карина Андреевна")
-@Severity(value = SeverityLevel.CRITICAL)
-@Issue(value = "UT-4627")
 @DisplayName("(RecresTest_1) Аватары содержат айди пользователей")
 public class Test_1 {
     private static String URL = "https://reqres.in/";
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Issue(value = "UT-4627")
 
     @Test
     public void checkAvatarAndIdTest() {
