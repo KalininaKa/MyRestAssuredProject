@@ -30,8 +30,6 @@ public class Test_1 {
     @Step(value = "Делаем GET api/users?page=2 и прокеряем что аватары содержат айди пользователей")
     public void checkAvatarAndIdTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
-        Allure.addAttachment("response", "application/json", Specifications.responseSpecOK200().toString());
-
         List<UserData> users = given()
                 .when()
                 .get("api/users?page=2")

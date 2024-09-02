@@ -45,5 +45,6 @@ public class Test_2 {
        assertNotNull(successUserReg.getToken());
        assertEquals(UserId, successUserReg.getId());
        assertEquals(UserPassword, successUserReg.getToken());
+       Allure.addAttachment("response", "application/json", successUserReg.toString());
     }
 }
