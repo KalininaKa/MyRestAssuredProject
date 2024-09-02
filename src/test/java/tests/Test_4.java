@@ -2,6 +2,7 @@ package tests;
 
 
 import api.reqres.specifications.Specifications;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -14,7 +15,14 @@ import static io.restassured.RestAssured.given;
 public class Test_4 {
     private static String URL = "https://reqres.in/";
     private static String UserIdNotFound = "23";
+
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("Проверка, что получили 404 по несуществующему id")
+    @Step(value = "Делаем GET api/users/{id} и получаем 404")
+
     public void singleUserNotFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecNOTFOUND404());
             given().when()

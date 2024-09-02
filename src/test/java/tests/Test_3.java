@@ -4,6 +4,7 @@ package tests;
 import api.reqres.registration.Register;
 import api.reqres.registration.UnsuccessUserReg;
 import api.reqres.specifications.Specifications;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -19,6 +20,11 @@ public class Test_3 {
     private static String URL = "https://reqres.in/";
 
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("Проверка, что не успешная регистрация (отсутствует пароль)")
+    @Step(value = "Не успешная регистрация пользователя, проверка, что получен ErrorText = \"Missing password\" ")
     public void unSuccessUserRegTest() {
         String ErrorText = "Missing password";
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecERROR400());

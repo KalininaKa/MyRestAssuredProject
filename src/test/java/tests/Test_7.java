@@ -3,6 +3,7 @@ package tests;
 
 import api.reqres.specifications.Specifications;
 import api.reqres.users.UserData;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
@@ -18,6 +19,12 @@ public class Test_7 {
     private static String Avatar = "https://reqres.in/img/faces/2-image.jpg";
 
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("Проверка что пполучаем существующего юзера")
+    @Step(value = "Делаем GET api/users/{id} и проверяем что получили существующего юзера")
+
     public void singleUserFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         UserData user = given()

@@ -4,6 +4,7 @@ package tests;
 import api.reqres.specifications.Specifications;
 import api.reqres.users.UserUpd;
 import api.reqres.users.UserUpdResponse;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -24,6 +25,11 @@ public class Test_12 {
     private static String Name = "morpheus";
 
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Description("Проверка PATCH api/users/{id}")
+    @Step(value = "Делаем PATCH api/users/{id} и проверяем что юзер успешно пропатчен")
     public void patchUserTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         UserUpd newUser = new UserUpd(Name, Job);

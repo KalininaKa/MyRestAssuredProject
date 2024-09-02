@@ -2,6 +2,7 @@ package tests;
 
 
 import api.reqres.specifications.Specifications;
+import io.qameta.allure.*;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -17,6 +18,12 @@ public class Test_16 {
     private static Integer UserId = 2;
 
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("Проверка по schema json в ответе")
+    @Step(value = "Делаем GET api/users/{id} и проверяем что ответ соответствует schema json")
+
     public void singleUserFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         given()

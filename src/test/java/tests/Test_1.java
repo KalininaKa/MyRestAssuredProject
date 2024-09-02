@@ -20,8 +20,9 @@ public class Test_1 {
     @Test
     @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
     @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.CRITICAL)
+    @Severity(value = SeverityLevel.NORMAL)
     @Issue(value = "UT-4627")
+    @Description("Проверка, что аватары содержат айди пользователей")
     public void checkAvatarAndIdTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
 

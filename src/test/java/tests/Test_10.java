@@ -4,6 +4,7 @@ package tests;
 import api.reqres.users.Create;
 import api.reqres.specifications.Specifications;
 import api.reqres.users.SuccessUserCreated;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
 import java.util.Date;
@@ -17,6 +18,12 @@ public class Test_10 {
     private static String Job = "leader";
     private static String Name = "morpheus";
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Description("Проверка POST /api/users")
+    @Step(value = "Делаем POST /api/users и проверяем что юзер успешно создан")
+
     public void successUserCreateTest() {
 
 

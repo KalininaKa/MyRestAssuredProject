@@ -3,6 +3,7 @@ package tests;
 
 import api.reqres.colors.Colors;
 import api.reqres.specifications.Specifications;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
@@ -18,6 +19,12 @@ public class Test_8 {
     private static String PantoneValue = "17-2031";
 
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("Проверка GET /api/unknown/{id}")
+    @Step(value = "Делаем GET /api/unknown/{id} и проверяем что получили")
+
     public void userFoundColorsTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Colors colors = given()

@@ -4,6 +4,7 @@ package tests;
 import api.reqres.login.Login;
 import api.reqres.login.LoginSuccessful;
 import api.reqres.specifications.Specifications;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -18,6 +19,11 @@ public class Test_14 {
     private static String URL = "https://reqres.in/";
 
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Description("Проверка LOGIN-SUCCESSFUL")
+    @Step(value = "Делаем POST api/login и проверяем что LOGIN-SUCCESSFUL и получен токен")
     public void LoginSuccessfulTest() {
         String Email = "eve.holt@reqres.in";
         String Password = "cityslicka";

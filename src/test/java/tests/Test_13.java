@@ -2,6 +2,7 @@ package tests;
 
 
 import api.reqres.specifications.Specifications;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -15,6 +16,11 @@ public class Test_13 {
     private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
     @Test
+    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+    @Owner(value = "Калинина Карина Андреевна")
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Description("Проверка DELETE api/users/{id}")
+    @Step(value = "Делаем DELETE api/users/{id} и проверяем что юзер успешно удален")
     public void deleteUserTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK204());
             given().when()
