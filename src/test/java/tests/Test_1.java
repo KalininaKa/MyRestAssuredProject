@@ -28,7 +28,7 @@ public class Test_1 {
 
         List<UserData> users = given()
                 .when()
-                .get("api/users5?page=2")
+                .get("api/users?page=2")
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
 
