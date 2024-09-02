@@ -59,9 +59,7 @@ public class Specifications {
 
     public static void installSpecification (RequestSpecification request, ResponseSpecification response){
         RestAssured.requestSpecification = request;
-        Allure.addAttachment("request", "application/json", request.toString());
         RestAssured.responseSpecification = response;
-        Allure.addAttachment("response", "application/json", response.toString());
     }
 }
 
