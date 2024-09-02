@@ -11,8 +11,12 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "GET api/users")
 
 @Tag("@API")
+@TmsLink("RecresTest_17")
 @Owner(value = "Калинина Карина Андреевна")
 @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
 @Severity(value = SeverityLevel.NORMAL)

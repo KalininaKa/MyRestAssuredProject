@@ -10,17 +10,21 @@ import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "GET api/login")
 
 @Tag("@API")
+@TmsLink("RecresTest_16")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_16) Получение существующего юзера (проверка по schema json в ответе)")
 public class Test_16 {
     private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
 
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.NORMAL)
     @Description("Проверка по schema json в ответе")
     @Step(value = "Делаем GET api/users/{id} и проверяем что ответ соответствует schema json")
 

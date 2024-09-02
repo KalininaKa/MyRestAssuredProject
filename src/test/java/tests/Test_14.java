@@ -12,17 +12,21 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "POST api/login")
 
 @Tag("@API")
+@TmsLink("RecresTest_14")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_14) LOGIN-SUCCESSFUL")
 public class Test_14 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.CRITICAL)
-    @Description("Проверка LOGIN-SUCCESSFUL")
+   @Description("Проверка LOGIN-SUCCESSFUL")
     @Step(value = "Делаем POST api/login и проверяем что LOGIN-SUCCESSFUL и получен токен")
     public void LoginSuccessfulTest() {
         String Email = "eve.holt@reqres.in";

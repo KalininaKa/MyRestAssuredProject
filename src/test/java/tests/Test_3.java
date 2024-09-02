@@ -13,16 +13,20 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "POST api/register")
 
 @Tag("@API")
+@TmsLink("RecresTest_3")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_3) Не успешная регистрация (отсутствует пароль)")
 public class Test_3 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.NORMAL)
     @Description("Проверка, что не успешная регистрация (отсутствует пароль)")
     @Step(value = "Не успешная регистрация пользователя, проверка, что получен ErrorText = \"Missing password\" ")
     public void unSuccessUserRegTest() {

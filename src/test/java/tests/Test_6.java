@@ -9,16 +9,20 @@ import org.junit.jupiter.api.*;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "GET api/users")
 
 @Tag("@API")
+@TmsLink("RecresTest_6")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.MINOR)
 @DisplayName("(RecresTest_6) Почта оканчиваются на reqres.in")
 public class Test_6 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.MINOR)
     @Description("Проверка что почта оканчиваются на reqres.in")
     @Step(value = "Делаем GET api/users?page=2 и проверяем что почта оканчиваются на reqres.in")
 

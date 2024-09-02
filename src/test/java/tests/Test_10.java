@@ -10,17 +10,21 @@ import org.junit.jupiter.api.*;
 import java.util.Date;
 
 import static io.restassured.RestAssured.given;
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "POST api/users")
 
 @Tag("@API")
+@TmsLink("RecresTest_10")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_10) Успешное создание юзера POST /api/users")
 public class Test_10 {
     private static String URL = "https://reqres.in/";
     private static String Job = "leader";
     private static String Name = "morpheus";
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.CRITICAL)
     @Description("Проверка POST /api/users")
     @Step(value = "Делаем POST /api/users и проверяем что юзер успешно создан")
 

@@ -10,15 +10,21 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "GET api/unknown")
+
 @Tag("@API")
+@TmsLink("RecresTest_9")
+@Issue(value = "UT-4628")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_9) 404 при получении по несуществующему id GET /api/unknown/{id}")
 public class Test_9 {
     private static String URL = "https://reqres.in/";
     private static Integer IdNotFound = 23;
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.NORMAL)
     @Description("Проверка 404 при получении по несуществующему id GET /api/unknown/{id}")
     @Step(value = "Делаем GET /api/unknown/{id} по несуществующему id и проверяем что получили 404")
 

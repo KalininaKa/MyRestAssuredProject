@@ -15,8 +15,15 @@ import java.util.Date;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "PATCH api/users")
 
 @Tag("@API")
+@TmsLink("RecresTest_12")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_12) Patch существующего юзера PATCH api/users/{id}")
 public class Test_12 {
     private static String URL = "https://reqres.in/";
@@ -25,9 +32,6 @@ public class Test_12 {
     private static String Name = "morpheus";
 
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.CRITICAL)
     @Description("Проверка PATCH api/users/{id}")
     @Step(value = "Делаем PATCH api/users/{id} и проверяем что юзер успешно пропатчен")
     public void patchUserTest() {

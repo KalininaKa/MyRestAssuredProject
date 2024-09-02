@@ -7,8 +7,15 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "GET api/users")
 
 @Tag("@API")
+@TmsLink("RecresTest_7")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_7) Получение существующего юзера")
 public class Test_7 {
     private static String URL = "https://reqres.in/";
@@ -19,9 +26,6 @@ public class Test_7 {
     private static String Avatar = "https://reqres.in/img/faces/2-image.jpg";
 
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.NORMAL)
     @Description("Проверка что пполучаем существующего юзера")
     @Step(value = "Делаем GET api/users/{id} и проверяем что получили существующего юзера")
 

@@ -13,15 +13,20 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "POST api/register")
+
 @Tag("@API")
+@TmsLink("RecresTest_2")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_2) Успешная регистрация")
 public class Test_2 {
     private static String URL = "https://reqres.in/";
 
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.CRITICAL)
     @Description("Проверка, что проходит успешная регистрация")
     @Step(value = "Успешная регистрация пользователя, проверка UserId и токена")
     public void successUserRegTest() {

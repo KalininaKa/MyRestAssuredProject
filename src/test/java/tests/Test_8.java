@@ -8,7 +8,15 @@ import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
 
+@Epic(value = "reqres.in")
+@Feature(value = "Тесты для reqres.in")
+@Story(value = "GET api/unknown")
+
 @Tag("@API")
+@TmsLink("RecresTest_8")
+@Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
+@Owner(value = "Калинина Карина Андреевна")
+@Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_8) GET /api/unknown/{id}")
 public class Test_8 {
     private static String URL = "https://reqres.in/";
@@ -19,9 +27,6 @@ public class Test_8 {
     private static String PantoneValue = "17-2031";
 
     @Test
-    @Link(name = "Ссылка на reqres.in", url = "https://reqres.in")
-    @Owner(value = "Калинина Карина Андреевна")
-    @Severity(value = SeverityLevel.NORMAL)
     @Description("Проверка GET /api/unknown/{id}")
     @Step(value = "Делаем GET /api/unknown/{id} и проверяем что получили")
 
