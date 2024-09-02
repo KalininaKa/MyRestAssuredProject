@@ -13,9 +13,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@Epic(value = "reqres.in")
-@Feature(value = "Тесты для reqres.in")
-@Story(value = "POST api/register")
+
 
 @Tag("@API")
 @TmsLink("RecresTest_2")
@@ -27,6 +25,9 @@ public class Test_2 {
     private static String URL = "https://reqres.in/";
 
     @Test
+    @Epic(value = "reqres.in")
+    @Feature(value = "Тесты для reqres.in")
+    @Story(value = "POST api/register")
     @Description("Проверка, что проходит успешная регистрация")
     @Step(value = "Успешная регистрация пользователя, проверка UserId и токена")
     public void successUserRegTest() {
@@ -45,5 +46,6 @@ public class Test_2 {
        assertNotNull(successUserReg.getToken());
        assertEquals(UserId, successUserReg.getId());
        assertEquals(UserPassword, successUserReg.getToken());
+       Allure.addAttachment("response", "application/json", successUserReg.toString());
     }
 }
