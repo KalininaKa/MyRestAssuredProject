@@ -36,7 +36,6 @@ public class Test_1 {
                 .get("api/users?page=2")
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
-        Allure.addAttachment("Response", "application/json", users.toString());
         users.forEach(x -> Assertions.assertTrue(x.getAvatar().contains(x.getId().toString())));
 
 

@@ -1,5 +1,6 @@
 package api.reqres.specifications;
 
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -58,7 +59,9 @@ public class Specifications {
 
     public static void installSpecification (RequestSpecification request, ResponseSpecification response){
         RestAssured.requestSpecification = request;
+        Allure.addAttachment("request", "application/json", request.toString());
         RestAssured.responseSpecification = response;
+        Allure.addAttachment("response", "application/json", response.toString());
     }
 }
 
