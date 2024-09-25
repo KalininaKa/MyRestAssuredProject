@@ -1,6 +1,7 @@
 package api.reqres.specifications;
 
 import io.qameta.allure.Step;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -19,6 +20,7 @@ public class Specifications {
                 .setBaseUri(BASE_URL)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
+                .addFilter(new AllureRestAssured())
                 //.addFilters(new AllureRestAssured())
                 .build();
     }
