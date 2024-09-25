@@ -21,8 +21,8 @@ public class Specifications {
                 .setBaseUri(BASE_URL)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
-                .addFilter(new ErrorLoggingFilter())
-                .addFilter(new AllureRestAssured())
+                //.addFilter(new ErrorLoggingFilter())
+                //.addFilter(new AllureRestAssured())
                 .build();
     }
     @Step("Проверяем, что статус 200 ОК")
@@ -64,6 +64,9 @@ public class Specifications {
     public static void installSpecification (RequestSpecification request, ResponseSpecification response){
         RestAssured.requestSpecification = request;
         RestAssured.responseSpecification = response;
+        RestAssured.filters(new AllureRestAssured());
+        RestAssured.filters(new ErrorLoggingFilter());
+
     }
 }
 
