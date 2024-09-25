@@ -5,6 +5,7 @@ package tests;
 import api.reqres.specifications.Specifications;
 import api.reqres.users.UserData;
 import io.qameta.allure.*;
+import io.qameta.allure.restassured.AllureRestAssured;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class Test_1 {
     public void checkAvatarAndIdTest() {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         List<UserData> users = given()
+                .filter(new AllureRestAssured())
                 .when()
                 .get("api/users?page=2")
                 .then().log().all()
