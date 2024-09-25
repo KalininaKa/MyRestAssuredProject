@@ -14,7 +14,6 @@ import static util.Configuration.BASE_URL;
 
 public class Specifications {
 
-    @Step("Url - {0}")
     public static RequestSpecification requestSpec(){
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URL)
