@@ -31,7 +31,6 @@ public class Test_1 {
     public void checkAvatarAndIdTest() {
         Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         List<UserData> users = given()
-                .filter(new AllureRestAssured())
                 .when()
                 .get("/api/users?page=2")
                 .then().log().all()

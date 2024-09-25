@@ -13,7 +13,7 @@ public class Configuration {
 
 
         PROPS = new ConfigReader(PROPS_FILE);
-        STAND = PROPS.getProperty("base.host", "stand2");
+        STAND = PROPS.getProperty("base.host", "stand1");
         BASE_URL = PROPS.getProperty(STAND + ".host");
 
     }
