@@ -1,5 +1,6 @@
 task_branch = "${TEST_BRANCH_NAME}" //переменная, которая задается из дженкинса (имя ветки)
 tag = "${TAG}" //тег для запуска тестов, задается из дженкинса
+stand = "${STAND}" //название стенда для запуска тестов, задается из дженкинса
 def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] : task_branch.trim()
 //если ветка, которую мы вписали содержит origin, то разделяем слешем и берем часть после слеша, если щкшпшт не содержит то берем как есть
 currentBuild.displayName = "$branch_cutted" // то что отображается в дженкинсе в качестве активной джобы, (передаем название ветки)
@@ -30,7 +31,7 @@ node { // исполнение пайплайна и что в нем должн
 
         try {
             stage("Run tests") {
-                runTestWithTag("${tag}") //запуск тестов с тегом
+                runTestWithTag("${tag}", "${stand}") //запуск тестов с тегом
             }
         } finally {
             stage("Allure") {
@@ -40,11 +41,12 @@ node { // исполнение пайплайна и что в нем должн
     }
 }
 
-def runTestWithTag(String tag) {
+def runTestWithTag(String tag, string stand) {
     try {
         def mvnHome = tool 'maven jenkins'
         echo "${tag}"
-        sh "${mvnHome}/bin/mvn test -D groups=${tag}"
+        echo "${stand}"
+        sh "${mvnHome}/bin/mvn test -D groups=${tag} -Dbase.host=${stand}"
     } finally {
         echo "some failed tests"
     }
