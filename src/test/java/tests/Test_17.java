@@ -22,7 +22,6 @@ import static org.hamcrest.CoreMatchers.hasItem;
 @Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_17) Получение существующего юзера (проверка что юзер с именем Tobias имеет фамилию Funke)")
 public class Test_17 {
-    private static String URL = "https://reqres.in/";
     private static Integer Page = 2;
 
     @Test

@@ -18,7 +18,6 @@ import static io.restassured.RestAssured.given;
 @Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_7) Получение существующего юзера")
 public class Test_7 {
-    private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
     private static String FirstName = "Janet";
     private static String LastName = "Weaver";
@@ -33,7 +32,7 @@ public class Test_7 {
         Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         UserData user = given()
                 .when()
-                .get("api/users/" + UserId)
+                .get("/api/users/" + UserId)
                 .then().log().all()
                 .extract().body().jsonPath().getObject("data", UserData.class);
 

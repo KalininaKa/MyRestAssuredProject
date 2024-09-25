@@ -21,7 +21,6 @@ import static io.restassured.RestAssured.given;
 @Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_16) Получение существующего юзера (проверка по schema json в ответе)")
 public class Test_16 {
-    private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
 
     @Test
@@ -32,7 +31,7 @@ public class Test_16 {
         Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         given()
                 .when()
-                .get("api/users/" + UserId)
+                .get("/api/users/" + UserId)
                 .then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema.json"));
     }
 }

@@ -24,19 +24,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_3) Не успешная регистрация (отсутствует пароль)")
 public class Test_3 {
-    private static String URL = "https://reqres.in/";
 
     @Test
     @Description("Проверка, что не успешная регистрация (отсутствует пароль)")
     @Step(value = "Не успешная регистрация пользователя, проверка, что получен ErrorText = \"Missing password\" ")
     public void unSuccessUserRegTest() {
-        String ErrorText = "Missing password";
+        String ErrorText = "Missing password1";
         Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecERROR400());
         Register user_2 = new Register("sydney@fife", "");
         UnsuccessUserReg unsuccessUserReg = given()
                 .body(user_2)
                 .when()
-                .post("api/register")
+                .post("/api/register")
                 .then()
                 .log().body()
                 .extract().as(UnsuccessUserReg.class);

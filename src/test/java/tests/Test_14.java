@@ -23,7 +23,6 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 @Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_14) LOGIN-SUCCESSFUL")
 public class Test_14 {
-    private static String URL = "https://reqres.in/";
 
     @Test
    @Description("Проверка LOGIN-SUCCESSFUL")
@@ -37,7 +36,7 @@ public class Test_14 {
         LoginSuccessful loginSuccessful = given()
                 .body(request)
                 .when()
-                .post("api/login")
+                .post("/api/login")
                 .then()
                 .log().all()
                 .extract().as(LoginSuccessful.class);

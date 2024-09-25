@@ -23,7 +23,6 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 @Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_15) LOGIN-UNSUCCESSFUL (отсутствует пароль)")
 public class Test_15 {
-    private static String URL = "https://reqres.in/";
 
     @Test
     @Description("Проверка LOGIN-UNSUCCESSFUL")
@@ -37,7 +36,7 @@ public class Test_15 {
         UnsuccessfulLogin loginUnSuccessful = given()
                 .body(request)
                 .when()
-                .post("api/login")
+                .post("/api/login")
                 .then()
                 .log().all()
                 .extract().as(UnsuccessfulLogin.class);

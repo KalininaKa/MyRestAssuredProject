@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_2) Успешная регистрация")
 public class Test_2 {
-    private static String URL = "https://reqres.in/";
 
     @Test
     @Epic(value = "reqres.in")
@@ -38,7 +37,7 @@ public class Test_2 {
         SuccessUserReg successUserReg = given()
                 .body(user)
                 .when()
-                .post("api/register")
+                .post("/api/register")
                 .then()
                 .log().all()
                 .extract().as(SuccessUserReg.class);

@@ -20,7 +20,6 @@ import static io.restassured.RestAssured.given;
 @Severity(value = SeverityLevel.MINOR)
 @DisplayName("(RecresTest_6) Почта оканчиваются на reqres.in")
 public class Test_6 {
-    private static String URL = "https://reqres.in/";
 
     @Test
     @Description("Проверка что почта оканчиваются на reqres.in")
@@ -31,7 +30,7 @@ public class Test_6 {
 
         List<UserData> users = given()
                 .when()
-                .get("api/users?page=2")
+                .get("/api/users?page=2")
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
 

@@ -22,7 +22,7 @@ import static io.restassured.RestAssured.given;
 @Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_9) 404 при получении по несуществующему id GET /api/unknown/{id}")
 public class Test_9 {
-    private static String URL = "https://reqres.in/";
+
     private static Integer IdNotFound = 23;
     @Test
     @Description("Проверка 404 при получении по несуществующему id GET /api/unknown/{id}")
@@ -31,7 +31,7 @@ public class Test_9 {
     public void singleUserNotFoundTest() {
         Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecNOTFOUND404());
             given().when()
-                .get("api/unknown/" + IdNotFound)
+                .get("/api/unknown/" + IdNotFound)
                 .then().log().all();
     }
 }

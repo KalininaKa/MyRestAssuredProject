@@ -20,15 +20,14 @@ import static io.restassured.RestAssured.given;
 @Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_12) Удаление существующего юзера")
 public class Test_13 {
-    private static String URL = "https://reqres.in/";
-    private static Integer UserId = 2;
+     private static Integer UserId = 2;
     @Test
    @Description("Проверка DELETE api/users/{id}")
     @Step(value = "Делаем DELETE api/users/{id} и проверяем что юзер успешно удален")
     public void deleteUserTest() {
         Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK204());
             given().when()
-                .delete("api/users/" + UserId)
+                .delete("/api/users/" + UserId)
                 .then().log().all();
     }
 }

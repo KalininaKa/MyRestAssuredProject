@@ -19,7 +19,7 @@ import static io.restassured.RestAssured.given;
 @Severity(value = SeverityLevel.NORMAL)
 @DisplayName("(RecresTest_8) GET /api/unknown/{id}")
 public class Test_8 {
-    private static String URL = "https://reqres.in/";
+
     private static Integer Id = 2;
     private static String Name = "fuchsia rose";
     private static Integer Year = 2001;
@@ -34,7 +34,7 @@ public class Test_8 {
         Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         Colors colors = given()
                 .when()
-                .get("api/unknown/" + Id)
+                .get("/api/unknown/" + Id)
                 .then().log().all()
                 .extract().body().jsonPath().getObject("data", Colors.class);
 

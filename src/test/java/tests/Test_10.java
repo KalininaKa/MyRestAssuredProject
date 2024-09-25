@@ -21,7 +21,6 @@ import static io.restassured.RestAssured.given;
 @Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_10) Успешное создание юзера POST /api/users")
 public class Test_10 {
-    private static String URL = "https://reqres.in/";
     private static String Job = "leader";
     private static String Name = "morpheus";
     @Test
@@ -36,7 +35,7 @@ public class Test_10 {
         SuccessUserCreated successUserCreate = given()
                 .body(user)
                 .when()
-                .post("api/users")
+                .post("/api/users")
                 .then()
                 .log().all()
                 .extract().as(SuccessUserCreated.class);

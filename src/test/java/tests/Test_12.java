@@ -26,7 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Severity(value = SeverityLevel.CRITICAL)
 @DisplayName("(RecresTest_12) Patch существующего юзера PATCH api/users/{id}")
 public class Test_12 {
-    private static String URL = "https://reqres.in/";
     private static Integer UserId = 2;
     private static String Job = "zion resident";
     private static String Name = "morpheus";
@@ -40,7 +39,7 @@ public class Test_12 {
         UserUpdResponse newUserResponse = given()
                 .body(newUser)
                 .when()
-                .patch("api/users/" + UserId)
+                .patch("/api/users/" + UserId)
                 .then()
                 .log().all()
                 .extract().as(UserUpdResponse.class);

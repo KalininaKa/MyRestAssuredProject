@@ -21,7 +21,6 @@ import static io.restassured.RestAssured.given;
 @Severity(value = SeverityLevel.MINOR)
 @DisplayName("(RecresTest_5) Года правильно отсортированы")
 public class Test_5 {
-    private static String URL = "https://reqres.in/";
 
     @Test
     @Description("Проверка сортировки по годам")
