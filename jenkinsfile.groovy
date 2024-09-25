@@ -41,7 +41,7 @@ node { // исполнение пайплайна и что в нем должн
     }
 }
 
-def runTestWithTag(String tag, string stand) {
+def runTestWithTag(String tag, String stand) {
     try {
         def mvnHome = tool 'maven jenkins'
         echo "${tag}"
