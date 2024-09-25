@@ -33,6 +33,7 @@ node { // исполнение пайплайна и что в нем должн
             stage("Run tests") {
                 runTestWithTag("${stand}") //запуск тестов с тегом
             }
+
         } finally {
             stage("Allure") {
                 generateAllure() //генерация отчета Allure
