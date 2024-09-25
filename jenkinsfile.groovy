@@ -31,7 +31,7 @@ node { // исполнение пайплайна и что в нем должн
 
         try {
             stage("Run tests") {
-                runTestWithTag("${tag}", "${stand}") //запуск тестов с тегом
+                runTestWithTag("${stand}") //запуск тестов с тегом
             }
         } finally {
             stage("Allure") {
@@ -41,12 +41,12 @@ node { // исполнение пайплайна и что в нем должн
     }
 }
 
-def runTestWithTag(String tag, String stand) {
+def runTestWithTag(String stand) {
     try {
         def mvnHome = tool 'maven jenkins'
-        echo "${tag}"
+        //echo "${tag}"
         echo "${stand}"
-        sh "${mvnHome}/bin/mvn test -D groups=${tag} -Dbase.host=${stand}"
+        sh "${mvnHome}/bin/mvn test -Dbase.host=${stand}"
     } finally {
         echo "some failed tests"
     }
