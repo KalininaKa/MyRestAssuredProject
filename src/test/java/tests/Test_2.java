@@ -33,7 +33,7 @@ public class Test_2 {
     public void successUserRegTest() {
         Integer UserId = 4;
         String UserPassword = "QpwL5tke4Pnpja7X4";
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         Register user = new Register("eve.holt@reqres.in", "pistol");
         SuccessUserReg successUserReg = given()
                 .body(user)

@@ -30,7 +30,7 @@ public class Test_7 {
     @Step(value = "Делаем GET api/users/{id} и проверяем что получили существующего юзера")
 
     public void singleUserFoundTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         UserData user = given()
                 .when()
                 .get("api/users/" + UserId)

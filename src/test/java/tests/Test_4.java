@@ -28,7 +28,7 @@ public class Test_4 {
     @Step(value = "Делаем GET api/users/{id} и получаем 404")
 
     public void singleUserNotFoundTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecNOTFOUND404());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecNOTFOUND404());
             given().when()
                 .get("api/users/" + UserIdNotFound)
                 .then().log().all();

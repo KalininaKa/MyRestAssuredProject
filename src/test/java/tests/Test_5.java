@@ -28,7 +28,7 @@ public class Test_5 {
     @Step(value = "Делаем GET /api/unknown и проверяем что записи отсортированы по годам")
 
     public void checkSortedYearsTest(){
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         List<Colors> data = given()
                 .when()
                 .get("/api/unknown")

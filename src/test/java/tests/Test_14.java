@@ -32,7 +32,7 @@ public class Test_14 {
         String Email = "eve.holt@reqres.in";
         String Password = "cityslicka";
         String Token = "QpwL5tke4Pnpja7X4";
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         Login request = new Login(Email, Password);
         LoginSuccessful loginSuccessful = given()
                 .body(request)

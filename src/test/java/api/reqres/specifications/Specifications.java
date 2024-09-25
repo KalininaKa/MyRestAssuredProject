@@ -1,8 +1,6 @@
 package api.reqres.specifications;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -11,11 +9,15 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import static util.Configuration.BASE_URL;
+
+
 public class Specifications {
+
     @Step("Url - {0}")
-    public static RequestSpecification requestSpec(String url){
+    public static RequestSpecification requestSpec(){
         return new RequestSpecBuilder()
-                .setBaseUri(url)
+                .setBaseUri(BASE_URL)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
                 //.addFilters(new AllureRestAssured())

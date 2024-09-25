@@ -35,7 +35,7 @@ public class Test_12 {
     @Description("Проверка PATCH api/users/{id}")
     @Step(value = "Делаем PATCH api/users/{id} и проверяем что юзер успешно пропатчен")
     public void patchUserTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         UserUpd newUser = new UserUpd(Name, Job);
         UserUpdResponse newUserResponse = given()
                 .body(newUser)

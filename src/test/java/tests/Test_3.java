@@ -31,7 +31,7 @@ public class Test_3 {
     @Step(value = "Не успешная регистрация пользователя, проверка, что получен ErrorText = \"Missing password\" ")
     public void unSuccessUserRegTest() {
         String ErrorText = "Missing password";
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecERROR400());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecERROR400());
         Register user_2 = new Register("sydney@fife", "");
         UnsuccessUserReg unsuccessUserReg = given()
                 .body(user_2)

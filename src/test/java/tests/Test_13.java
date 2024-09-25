@@ -26,7 +26,7 @@ public class Test_13 {
    @Description("Проверка DELETE api/users/{id}")
     @Step(value = "Делаем DELETE api/users/{id} и проверяем что юзер успешно удален")
     public void deleteUserTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK204());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK204());
             given().when()
                 .delete("api/users/" + UserId)
                 .then().log().all();

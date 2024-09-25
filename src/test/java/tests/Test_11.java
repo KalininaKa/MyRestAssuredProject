@@ -35,7 +35,7 @@ public class Test_11 {
     @Description("Проверка PUT api/users/{id}")
     @Step(value = "Делаем PUT api/users/{id} и проверяем что юзер успешно изменен")
     public void updatedUserTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         UserUpd newUser = new UserUpd(Name, Job);
         UserUpdResponse newUserResponse = given()
                 .body(newUser)

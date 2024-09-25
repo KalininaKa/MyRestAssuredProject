@@ -31,7 +31,7 @@ public class Test_10 {
     public void successUserCreateTest() {
 
 
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK201());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK201());
         Create user = new Create(Name, Job);
         SuccessUserCreated successUserCreate = given()
                 .body(user)

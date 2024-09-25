@@ -29,7 +29,7 @@ public class Test_9 {
     @Step(value = "Делаем GET /api/unknown/{id} по несуществующему id и проверяем что получили 404")
 
     public void singleUserNotFoundTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecNOTFOUND404());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecNOTFOUND404());
             given().when()
                 .get("api/unknown/" + IdNotFound)
                 .then().log().all();

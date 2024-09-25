@@ -31,7 +31,7 @@ public class Test_8 {
     @Step(value = "Делаем GET /api/unknown/{id} и проверяем что получили")
 
     public void userFoundColorsTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         Colors colors = given()
                 .when()
                 .get("api/unknown/" + Id)

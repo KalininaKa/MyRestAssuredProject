@@ -29,7 +29,7 @@ public class Test_16 {
     @Step(value = "Делаем GET api/users/{id} и проверяем что ответ соответствует schema json")
 
     public void singleUserFoundTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
         given()
                 .when()
                 .get("api/users/" + UserId)

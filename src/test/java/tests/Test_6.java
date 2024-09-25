@@ -27,7 +27,7 @@ public class Test_6 {
     @Step(value = "Делаем GET api/users?page=2 и проверяем что почта оканчиваются на reqres.in")
 
     public void checkEmailTest() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecOK200());
 
         List<UserData> users = given()
                 .when()

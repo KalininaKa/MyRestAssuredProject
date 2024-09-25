@@ -32,7 +32,7 @@ public class Test_15 {
     public void LoginUnSuccessfulTest() {
         String Email = "peter@klaven";
         String ErrorText = "Missing password";
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecERROR400());
+        Specifications.installSpecification(Specifications.requestSpec(), Specifications.responseSpecERROR400());
         Login request = new Login(Email);
         UnsuccessfulLogin loginUnSuccessful = given()
                 .body(request)
